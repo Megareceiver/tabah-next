@@ -1,21 +1,4 @@
-/* navbar */
+/* typography */
 /* ------------------------------------------ */
-nav a { color: rgba(0,0,0,0.87); }
-nav .nav-wrapper {
-  background-color: #fff;
-}
-nav .brand-logo img {
-  margin-top: 15px;
-  max-height: 34px;
-}
-#sidenav-overlay {
-  z-index: 996;
-}
-/* ------------------------------------------ */
-
-/* navbar */
-/* ------------------------------------------ */
-.slider .slides li .caption {
-  text-shadow: 1px 1px 1px #111;
-}
+blockquote { border-color: #1976D2 }
 /* ------------------------------------------ */

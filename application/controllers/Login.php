@@ -20,8 +20,8 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('public/content_header');
-		$this->load->view('public/welcome_page');
+		$this->load->view('public/content_header', array("custom_css"=>"/assets/css/login.css"));
+		$this->load->view('public/login_page');
 		$this->load->view('public/content_footer');
 	}
 }

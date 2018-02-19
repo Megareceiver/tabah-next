@@ -18,6 +18,10 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/assets/css/public.css">
 
+		<?php if(isset($custom_css) && !empty($custom_css)){ ?>
+		<link rel="stylesheet" href="<?=$custom_css?>">
+		<?php } ?>
+
 		<!-- Compiled and minified JavaScript -->
 		<script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

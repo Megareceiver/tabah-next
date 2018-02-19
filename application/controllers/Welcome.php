@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('public/content_header');
+		$this->load->view('public/content_header', array("custom_css"=>"/assets/css/welcome.css"));
 		$this->load->view('public/welcome_page');
 		$this->load->view('public/content_footer');
 	}
