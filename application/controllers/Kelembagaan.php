@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Kelembagaan extends CI_Controller {
 
 	/**
@@ -20,9 +21,23 @@ class Kelembagaan extends CI_Controller {
 	 */
 	public function index()
 	{
+		// Dummy data
+		$SESSION['nama_lembaga'] = "Megan..";
+		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
-		$this->load->view('lembaga/content_navigation');
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"index", "session_data"=>$SESSION));
 		$this->load->view('lembaga/profile_page');
+		$this->load->view('public/content_footer');
+	}
+
+	public function riwayat()
+	{
+		// Dummy data
+		$SESSION['nama_lembaga'] = "Megan..";
+		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
+		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
+		$this->load->view('lembaga/riwayat_page');
 		$this->load->view('public/content_footer');
 	}
 }
