@@ -8,11 +8,11 @@
           <li>Kelembagaan</li>
         </ul>
         <ul class="right">
-          <li><a href="#"><i class="material-icons">notifications</i></a></li>
+          <li><a href="/kelembagaan/notifikasi"><i class="material-icons">notifications</i></a></li>
           <li><a class="dropdown-button" href="#!" data-activates="dropdown-x"><i class="material-icons">more_vert</i></a></li>
         </ul>
         <ul id="dropdown-x" class="dropdown-content">
-          <li><a href="#!"><i class="material-icons">settings</i>Pengaturan</a></li>
+          <li><a href="#"><i class="material-icons">settings</i>Pengaturan</a></li>
           <li class="divider"></li>
           <li><a href="/account/logout"><i class="material-icons">exit_to_app</i>Keluar</a></li>
         </ul>
