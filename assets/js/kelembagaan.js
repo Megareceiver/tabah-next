@@ -10,4 +10,19 @@ $(function(){
       target = target.replace("#", "");
       $("#hibah-add").attr("href", "kelembagaan/add/" + target);
     });
+
+    //currency activator
+    currencyFormatActivator("#nominal, .currency");
+    $("#nominal").val(0);
+    $('#nominal').keyup();
+
+    $("form button[type=reset]").unbind().on("click", function(){
+      setTimeout(function() {
+        $("#nominal").val(0);
+        $('#nominal').keyup();
+      }, 100);
+    });
+
+    //number only
+    numberOnlyActivator(".number");
 });

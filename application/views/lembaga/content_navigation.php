@@ -52,6 +52,22 @@
     </div>
   </div>
 	<?php } ?>
+
+	<?php if(isset($page_option) && $page_option == "form"){ ?>
+  <div class="nav-content">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 l6 offset-l3">
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="kelembagaan-tab active" href="#deskripsi">Deskripsi</a></li>
+            <li class="tab"><a class="kelembagaan-tab" href="#rab">RAB</a></li>
+            <li class="tab"><a class="kelembagaan-tab" href="#persyaratan">Persyaratan</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+	<?php } ?>
 </nav>
 <!-- Navigation End -->
 

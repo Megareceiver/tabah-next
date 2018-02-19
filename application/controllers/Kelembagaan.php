@@ -70,8 +70,8 @@ class Kelembagaan extends CI_Controller {
 		$SESSION['nama_lembaga'] = "Megan..";
 		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
-		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
-		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"form", "session_data"=>$SESSION));
+		$this->load->view('lembaga/permohonan_awal_page');
 		$this->load->view('public/content_footer');
 	}
 
@@ -81,8 +81,8 @@ class Kelembagaan extends CI_Controller {
 		$SESSION['nama_lembaga'] = "Megan..";
 		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
-		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
-		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"form", "session_data"=>$SESSION));
+		$this->load->view('lembaga/beranda_page');
 		$this->load->view('public/content_footer');
 	}
 
@@ -92,8 +92,8 @@ class Kelembagaan extends CI_Controller {
 		$SESSION['nama_lembaga'] = "Megan..";
 		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
-		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
-		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"form", "session_data"=>$SESSION));
+		$this->load->view('lembaga/beranda_page');
 		$this->load->view('public/content_footer');
 	}
 }
