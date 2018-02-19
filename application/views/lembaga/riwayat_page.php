@@ -1,11 +1,3 @@
-<!-- Button Add -->
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue waves-effect waves-light">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-</div>
-<!-- Button Add End -->
-
 <main>
   <div class="container">
     <div class="row">

@@ -25,8 +25,8 @@ class Kelembagaan extends CI_Controller {
 		$SESSION['nama_lembaga'] = "Megan..";
 		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
-		$this->load->view('lembaga/content_navigation', array("page_option"=>"index", "session_data"=>$SESSION));
-		$this->load->view('lembaga/profile_page');
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"index", "session_data"=>$SESSION, "button_add"=>array("state"=>true, "url"=>"/kelembagaan/add/awal")));
+		$this->load->view('lembaga/beranda_page');
 		$this->load->view('public/content_footer');
 	}
 
@@ -42,6 +42,51 @@ class Kelembagaan extends CI_Controller {
 	}
 
 	public function notifikasi()
+	{
+		// Dummy data
+		$SESSION['nama_lembaga'] = "Megan..";
+		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
+		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
+		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('public/content_footer');
+	}
+
+	public function add($target)
+	{
+		switch ($target) {
+			case 'awal': $this->add_permohonan_awal(); break;
+			case 'pencairan': $this->add_pencairan(); break;
+			case 'pelaporan': $this->add_pelaporan(); break;
+
+			default: break;
+		}
+
+	}
+
+	public function add_permohonan_awal()
+	{
+		// Dummy data
+		$SESSION['nama_lembaga'] = "Megan..";
+		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
+		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
+		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('public/content_footer');
+	}
+
+	public function add_pencairan()
+	{
+		// Dummy data
+		$SESSION['nama_lembaga'] = "Megan..";
+		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
+		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
+		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
+		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('public/content_footer');
+	}
+
+	public function add_pelaporan()
 	{
 		// Dummy data
 		$SESSION['nama_lembaga'] = "Megan..";

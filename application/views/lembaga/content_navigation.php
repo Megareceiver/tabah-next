@@ -12,7 +12,8 @@
           <li><a class="dropdown-button" href="#!" data-activates="dropdown-x"><i class="material-icons">more_vert</i></a></li>
         </ul>
         <ul id="dropdown-x" class="dropdown-content">
-          <li><a href="#"><i class="material-icons">settings</i>Pengaturan</a></li>
+          <!-- <li><a href="#"><i class="material-icons">settings</i>Pengaturan</a></li> -->
+          <li><a href="#"><i class="material-icons">help</i>Bantuan</a></li>
           <li class="divider"></li>
           <li><a href="/account/logout"><i class="material-icons">exit_to_app</i>Keluar</a></li>
         </ul>
@@ -28,7 +29,7 @@
           <li><a href="/kelembagaan"><i class="material-icons">home</i>Beranda</a></li>
           <li><a href="/kelembagaan/riwayat"><i class="material-icons">history</i>Riwayat Hibah</a></li>
           <li><div class="divider"></div></li>
-          <li><a href="#!"><i class="material-icons">settings</i>Pengaturan</a></li>
+          <!-- <li><a href="#!"><i class="material-icons">settings</i>Pengaturan</a></li> -->
           <li><a href="#!"><i class="material-icons">help</i>Bantuan</a></li>
           <li><a class="waves-effect" href="/account/logout"><i class="material-icons">exit_to_app</i>Keluar</a></li>
         </ul>
@@ -42,9 +43,9 @@
       <div class="row">
         <div class="col s12 m10 offset-m1">
           <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active" href="#awal">Permohonan Awal</a></li>
-            <li class="tab"><a href="#pencairan">Permohonan Pencairan</a></li>
-            <li class="tab"><a href="#pelaporan">Pelaporan</a></li>
+            <li class="tab"><a class="kelembagaan-tab active" href="#awal">Permohonan Awal</a></li>
+            <li class="tab"><a class="kelembagaan-tab" href="#pencairan">Permohonan Pencairan</a></li>
+            <li class="tab"><a class="kelembagaan-tab" href="#pelaporan">Pelaporan</a></li>
           </ul>
         </div>
       </div>
@@ -53,3 +54,13 @@
 	<?php } ?>
 </nav>
 <!-- Navigation End -->
+
+<?php if(isset($button_add) && $button_add['state'] === true){ ?>
+<!-- Button Add -->
+<div class="fixed-action-btn">
+  <a id="hibah-add" href="<?=$button_add['url']?>" class="btn-floating btn-large blue waves-effect waves-light">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+</div>
+<!-- Button Add End -->
+<?php } ?>
