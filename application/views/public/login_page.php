@@ -9,7 +9,7 @@
             <span class="card-title"><blockquote>Login</blockquote></span>
             <p>Pastikan data kelembagaan anda telah diverifikasi, harap hubungi sekretariat kami bila anda menemukan kesulitan.</p>
             <div class="row">
-              <form class="col m12" method="post" action="login/validate">
+              <form class="col m12" method="post" action="account/validate">
                 <div class="row">
                   <div class="input-field col s12">
                     <input id="user" type="text" class="validate">

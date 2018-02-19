@@ -11,7 +11,7 @@
 	  	        <li><a href="#website"><i class="material-icons right">pages</i>Website resmi</a></li>
 	  	        <li><a href="#berita"><i class="material-icons right">forum</i>Berita terkini</a></li>
 	  	        <li><a href="#kontak"><i class="material-icons right">contact_phone</i>Kontak</a></li>
-	            <li><a href="login"><i class="material-icons right">keyboard_arrow_right</i>Login</a></li>
+	            <li><a href="account"><i class="material-icons right">keyboard_arrow_right</i>Login</a></li>
 	  	      </ul>
 	  				<ul class="side-nav" id="mobile-demo">
 	            <li><div class="user-view">
@@ -24,7 +24,7 @@
 	  					<li><a href="#website">Website resmi</a></li>
 	  					<li><a href="#berita">Berita terkini</a></li>
 	  					<li><a href="#kontak">Kontak</a></li>
-	  					<li><a href="login">Login</a></li>
+	  					<li><a href="account">Login</a></li>
 	  	      </ul>
 	  			</div>
 	  		</div>

@@ -1,3 +1,28 @@
+/* navbar */
+/* ------------------------------------------ */
+nav a { color: rgba(0,0,0,0.87); }
+nav, nav .nav-wrapper {
+  background-color: transparent;
+}
+nav .brand-logo img {
+  margin-top: 15px;
+  max-height: 34px;
+}
+#sidenav-overlay {
+  z-index: 996;
+}
+/* ------------------------------------------ */
+
+
+/* button */
+/* ------------------------------------------ */
+.fixed-action-btn {
+  right: 50px;
+  bottom: 50px;
+}
+/* ------------------------------------------ */
+
+
 /* typography */
 /* ------------------------------------------ */
 blockquote { border-color: #1976D2 }
