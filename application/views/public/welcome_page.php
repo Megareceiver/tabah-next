@@ -39,29 +39,29 @@
 	    <li>
 	      <img src="/assets/img/bg-1.jpg"> <!-- random image -->
 	      <div class="caption left-align">
-	        <h3>This is our big Tagline!</h3>
-	        <h5 class="white-text">Here's our small slogan.</h5>
+	        <h3>SELAMAT DATANG!</h3>
+	        <h5 class="white-text">di Website resmi Pemerintah Provinsi Jawa Barat.</h5>
 	      </div>
 	    </li>
 	    <li>
 	      <img src="/assets/img/bg-2.jpg"> <!-- random image -->
 	      <div class="caption left-align">
-					<h3>This is our big Tagline!</h3>
-	        <h5 class="white-text">Here's our small slogan.</h5>
+					<h3>TABAH - JAWA BARAT</h3>
+	        <h5 class="white-text">Tata Kelola Bantuan Hibah se-Jawa Barat</h5>
 	      </div>
 	    </li>
 			<li>
 	      <img src="/assets/img/bg-3.jpg"> <!-- random image -->
 	      <div class="caption left-align">
-					<h3>This is our big Tagline!</h3>
-	        <h5 class="white-text">Here's our small slogan.</h5>
+					<h3>Online Services.</h3>
+	        <h5 class="white-text">Pelayanan untuk pengajuan permohonan bantuan Hibah.</h5>
 	      </div>
 	    </li>
 			<li>
 	      <img src="/assets/img/bg-4.jpg"> <!-- random image -->
 	      <div class="caption left-align">
-					<h3>This is our big Tagline!</h3>
-	        <h5 class="white-text">Here's our small slogan.</h5>
+					<h3>Kelembagaan</h3>
+	        <h5 class="white-text">Terintegrasi dengan DPLEGA - JABAR.</h5>
 	      </div>
 	    </li>
 	  </ul>
@@ -96,10 +96,9 @@
 		      </div>
 					<div class="card-stacked">
 						<div class="card-content">
-							<span class="card-title">Card Title</span>
-							<p class="grey-text">2 Bulan lalu</p>
-							<p>I am a very simple card. I am good at containing small bits of information.
-							I am convenient because I require little markup to use effectively.</p>
+							<span class="card-title">Pembukaan Bantuan Hibah 2018</span>
+							<p class="grey-text">1 Bulan lalu</p>
+							<p>pembukaan untuk permohonan bantuan Hibah telah dibuka, pastikan data Kelembagaan ada telah lengkap dan ter-verifikasi.</p>
 						</div>
 						<div class="card-action">
 							<a href="#">Baca lebih lanjut</a>
@@ -112,10 +111,9 @@
 		      </div>
 					<div class="card-stacked">
 						<div class="card-content">
-							<span class="card-title">Card Title</span>
+							<span class="card-title">Penutupan & Pelaporan Penerima Bantuan Hibah 2017</span>
 							<p class="grey-text">2 Bulan lalu</p>
-							<p>I am a very simple card. I am good at containing small bits of information.
-							I am convenient because I require little markup to use effectively.</p>
+							<p>Laporkan kegiatan Kelembagaan Anda yang berkaitan dengan penggunaan dana hibah tepat waktu.</p>
 						</div>
 						<div class="card-action">
 							<a href="#">Baca lebih lanjut</a>

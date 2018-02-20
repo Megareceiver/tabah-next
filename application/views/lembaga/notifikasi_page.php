@@ -10,17 +10,6 @@
             <p class="collection-item"><span class="badge"><?=$this->public_function->time_elapsed_string($value->created_date)?></span><i class="material-icons left">notifications_none</i><?=$value->teks?></p>
           <?php }?>
           </div>
-          <!-- <p>Hari ini</p>
-          <div class="collection">
-            <p class="collection-item"><span class="badge">8 menit</span><i class="material-icons left">notifications_none</i>Proposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan Awal</p>
-            <p class="collection-item"><span class="badge">50 menit</span><i class="material-icons left">notifications_none</i>Proposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan Awal</p>
-          </div>
-          <p>Riwayat</p>
-          <div class="collection">
-            <p class="collection-item"><span class="badge">2 hari</span><i class="material-icons left">notifications_none</i>Proposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan Awal</p>
-            <p class="collection-item"><span class="badge">4 hari</span><i class="material-icons left">notifications_none</i>Proposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan Awal</p>
-            <p class="collection-item"><span class="badge">4 hari</span><i class="material-icons left">notifications_none</i>Proposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan AwalProposal Permohonan Awal</p>
-          </div> -->
         <?php } else { ?>
         <div class="section">
           <div class="row center grey-text">
