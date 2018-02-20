@@ -181,10 +181,16 @@ class Kelembagaan extends CI_Controller {
 	public function delete_persyaratan($target, $nomor_dokumen, $kode_data)
 	{
 
-		$_POST['nomor_dokumen'] = $nomor_dokumen;
-		$_POST['kode_data'] 		= $kode_data;
+		$_POST['nomor_dokumen'] 	 = $nomor_dokumen;
+		$_POST['kode_persyaratan'] = $kode_data;
 		switch ($target) {
-			case 'awal'			: $this->Kelembagaan_model->delete_rab("permohonan_awal_rab"); break;
+			case 'awal'			:
+				$result = $this->Kelembagaan_model->delete_persyaratan("permohonan_awal_persyaratan");
+				if($result) {
+					$path = "./uploads/permohonan_awal/".$nomor_dokumen."_".$kode_data.".pdf";
+					if(file_exists($path)) unlink($path);
+				}
+			break;
 			// case 'pencairan': $this->Kelembagaan_model->delete_rab_item("permohonan_awal_rab"); break;
 
 			default: break;

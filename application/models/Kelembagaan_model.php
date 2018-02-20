@@ -180,6 +180,13 @@ class Kelembagaan_model extends CI_Model {
 
         $this->db->insert($table, $_POST);
     }
+
+    function delete_persyaratan($table)
+    {
+        $this->db->where('kode_persyaratan', $_POST['kode_persyaratan']);
+        $result = $this->db->delete($table);
+        return $result;
+    }
 }
 
 ?>
