@@ -53,13 +53,13 @@
   </div>
 	<?php } ?>
 
-	<?php if(isset($page_option) && $page_option == "form"){ ?>
+	<?php if(isset($page_option) && $page_option == "form-tab"){ ?>
   <div class="nav-content">
     <div class="container">
       <div class="row">
         <div class="col s12 m10 offset-m1 l6 offset-l3">
           <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="kelembagaan-tab active" href="#deskripsi">Deskripsi</a></li>
+            <li class="tab"><a class="kelembagaan-tab" href="#deskripsi">Deskripsi</a></li>
             <li class="tab"><a class="kelembagaan-tab" href="#rab">RAB</a></li>
             <li class="tab"><a class="kelembagaan-tab" href="#persyaratan">Persyaratan</a></li>
           </ul>
@@ -74,7 +74,7 @@
 <?php if(isset($button_add) && $button_add['state'] === true){ ?>
 <!-- Button Add -->
 <div class="fixed-action-btn">
-  <a id="hibah-add" href="<?=$button_add['url']?>" class="btn-floating btn-large blue waves-effect waves-light">
+  <a id="hibah-add" href="<?=$button_add['url']?>" class="btn-floating btn-large blue waves-effect waves-light modal-trigger">
     <i class="large material-icons">mode_edit</i>
   </a>
 </div>

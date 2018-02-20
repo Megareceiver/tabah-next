@@ -3,7 +3,7 @@
       <!-- TAB 1 -->
       <div class="col s12 m12 l4">
         <div class="section">
-          <h4 class="light">Persyaratan</h4>
+          <h4 class="light">Persyaratan Pencairan</h4>
           <p>Anda perlu mempersiapkan berkas untuk diupload berdasarkan persyaratan yang dibutuhkan.</p>
 
           <ul class="collapsible" data-collapsible="accordion">
@@ -46,7 +46,7 @@
       <div class="col s12 m12 l8">
         <div class="card">
           <div class="card-content">
-            <span class="card-title">RAB Permohonan Awal</span>
+            <span class="card-title">RAB Pencairan</span>
             <p>Rencana Anggaran Biaya.</p>
             <div class="row">
               <form>
