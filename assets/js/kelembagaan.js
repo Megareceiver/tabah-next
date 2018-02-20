@@ -37,8 +37,13 @@ $(function(){
     //global action
     $(".modal-trigger").on("click", function(){
       if($(this).attr("data-id") != ""){
-        // $($(this).attr("data-target")).val($(this).attr("data-id"));
         edit_form_generator($(this).attr("data-id"), $(this).attr("data-target"));
+      }
+    });
+
+    $(".btn-rab-edit").on("click", function(){
+      if($(this).attr("data-id") != ""){
+        edit_form_rab_generator($(this).attr("data-id"), $(this).attr("data-reference"), $(this).attr("data-target"));
       }
     });
 });
@@ -64,6 +69,29 @@ function edit_form_generator(nomor_dokumen, target){
 
        $(target + " label").removeClass("active").addClass("active");
        $('#nominal').keyup();
+		},
+		complete: function(xhr,status) { },
+		error: function(xhr,status,error) { console.log(status); }
+	});
+}
+
+function edit_form_rab_generator(kode_data, nomor_dokumen, target){
+  $.ajax({
+		url: '/kelembagaan/get_info_rab_item',
+		type: 'post',
+		dataType: 'json',
+		async: false,
+		data: { kode_data : kode_data },
+		success: function(result){
+       $(target + " [name=kode_data]").val(result.kode_data);
+       $(target + " [name=uraian]").val(result.uraian);
+       $(target + " [name=volume]").val(result.volume);
+       $(target + " [name=satuan]").val(result.satuan);
+       $(target + " [name=harga]").val(result.harga);
+
+       $(target + " label").removeClass("active").addClass("active");
+       $('[name=harga]').keyup();
+       // $('.btn-rab-delete').attr("href", "/kelembagaan/delete_rab/");
 		},
 		complete: function(xhr,status) { },
 		error: function(xhr,status,error) { console.log(status); }

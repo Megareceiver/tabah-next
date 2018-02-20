@@ -34,3 +34,5 @@ class Account extends CI_Controller {
 		redirect('../../../', 'refresh');
 	}
 }
+
+?>
