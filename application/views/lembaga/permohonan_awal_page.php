@@ -58,7 +58,7 @@
             <span class="card-title">RAB Permohonan Awal</span>
             <p>Rencana Anggaran Biaya.</p>
             <div class="row">
-              <form id="rab" method="post" action="/kelembagaan/rab_awal/<?=$nomor_dokumen?>">
+              <form id="rab" method="post" action="/kelembagaan/rab/awal/<?=$nomor_dokumen?>">
                 <div class="row">
                   <div class="input-field col s6 l3">
                     <input name="kode_data" type="hidden">
@@ -104,7 +104,7 @@
                       <?php foreach ($daftar_rab as $rab) { ?>
                       <?php $total = $total + ($rab->volume * $rab->harga); ?>
                       <tr>
-                        <td><a href="#" data-id="<?=$rab->kode_data?>" data-target="#rab" data-reference="<?=$nomor_dokumen?>" class="btn-rab-edit"><?=$rab->uraian?></a></td>
+                        <td><a href="#" data-id="<?=$rab->kode_data?>" data-section="#rab" data-reference="<?=$nomor_dokumen?>" class="btn-rab-edit"><?=$rab->uraian?></a></td>
                         <td><?=$rab->volume?></td>
                         <td><?=$rab->satuan?></td>
                         <td><?=number_format($rab->harga)?></td>

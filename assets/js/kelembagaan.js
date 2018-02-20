@@ -6,6 +6,7 @@ $(function(){
     $('.navigation-collapse').sideNav();
     $('.dropdown-button').dropdown({constrainWidth: false});
     $('.modal').modal({dismissible: false});
+    $('select').material_select();
 
     //tab
     check_active_tab();
@@ -19,14 +20,14 @@ $(function(){
     });
 
     //currency activator
-    currencyFormatActivator("#nominal, .currency");
-    $("#nominal").val(0);
-    $('#nominal').keyup();
+    currencyFormatActivator("[name=nominal], .currency");
+    $("[name=nominal]").val(0);
+    $('[name=nominal]').keyup();
 
     $("form button[type=reset]").unbind().on("click", function(){
       setTimeout(function() {
-        $("#nominal").val(0);
-        $('#nominal').keyup();
+        $("[name=nominal]").val(0);
+        $('[name=nominal]').keyup();
       }, 100);
     });
 
@@ -37,7 +38,7 @@ $(function(){
     //global action
     $(".modal-trigger").on("click", function(){
       if($(this).attr("data-id") != ""){
-        edit_form_generator($(this).attr("data-id"), $(this).attr("data-target"));
+        edit_form_generator($(this).attr("data-id"), $(this).attr("data-section"), $(this).attr("data-target"));
       }
     });
 
@@ -54,21 +55,21 @@ function check_active_tab(){
   $("#hibah-add").attr("href", "#form-" + target);
 }
 
-function edit_form_generator(nomor_dokumen, target){
+function edit_form_generator(nomor_dokumen, section, target){
   $.ajax({
-		url: '/kelembagaan/get_info_proposal',
+		url: '/kelembagaan/get_info_proposal/' + target,
 		type: 'post',
 		dataType: 'json',
 		async: false,
 		data: { nomor_dokumen : nomor_dokumen },
 		success: function(result){
-       $(target + " [name=nomor_dokumen]").val(result.nomor_dokumen);
-       $(target + " [name=judul]").val(result.judul);
-       $(target + " [name=nominal]").val(result.nominal);
-       $(target + " [name=latar_belakang]").val(result.latar_belakang);
+       $(section + " [name=nomor_dokumen]").val(result.nomor_dokumen);
+       $(section + " [name=judul]").val(result.judul);
+       $(section + " [name=nominal]").val(result.nominal);
+       $(section + " [name=latar_belakang]").val(result.latar_belakang);
 
-       $(target + " label").removeClass("active").addClass("active");
-       $('#nominal').keyup();
+       $(section + " label").removeClass("active").addClass("active");
+       $('[name=nominal]').keyup();
 		},
 		complete: function(xhr,status) { },
 		error: function(xhr,status,error) { console.log(status); }
@@ -77,7 +78,7 @@ function edit_form_generator(nomor_dokumen, target){
 
 function edit_form_rab_generator(kode_data, nomor_dokumen, target){
   $.ajax({
-		url: '/kelembagaan/get_info_rab_item',
+		url: '/kelembagaan/get_info_rab_item/' + target,
 		type: 'post',
 		dataType: 'json',
 		async: false,

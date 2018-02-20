@@ -31,10 +31,10 @@ class Kelembagaan_model extends CI_Model {
         return $query->result();
     }
 
-    function insert_entry($table)
+    function insert_entry($table, $prefix_id)
     {
 
-        $_POST['nomor_dokumen'] = "PA_".uniqid();
+        $_POST['nomor_dokumen'] = $prefix_id."_".uniqid();
         $_POST['nomor_lembaga'] = "00000000000";
         $_POST['nominal']       = str_replace( ',', '', $_POST['nominal'] );
         $_POST['status']        = "Draft";
@@ -64,6 +64,13 @@ class Kelembagaan_model extends CI_Model {
         return $query->row();
     }
 
+    function get_proposal_rab_by_kode($table, $kode_data)
+    {
+      $this->db->where('kode_data', $kode_data);
+      $query = $this->db->get($table);
+      return $query->row();
+    }
+
     function get_proposal_rab($nomor_dokumen, $table)
     {
         $this->db->where('nomor_dokumen', $nomor_dokumen);
@@ -71,11 +78,13 @@ class Kelembagaan_model extends CI_Model {
         return $query->result();
     }
 
-    function get_proposal_rab_by_kode($table, $kode_data)
+    function get_proposal_list($table)
     {
-        $this->db->where('kode_data', $kode_data);
+        $this->db->where('nomor_lembaga', '00000000000');
+        $this->db->where('status !=', 'Selesai');
+        $this->db->order_by('created_date', 'DESC');
         $query = $this->db->get($table);
-        return $query->row();
+        return $query->result();
     }
 
     function send_proposal($table)
@@ -125,13 +134,6 @@ class Kelembagaan_model extends CI_Model {
 
     //persyaratan
     function get_persyaratan($nomor_dokumen, $table, $type){
-      // $this->db->select('p.kode_data, p.nama, x.berkas, x.status, x.created_date');
-      // $this->db->from('persyaratan p');
-      // $this->db->join($table. ' x', 'p.kode_data = x.kode_data', 'left outer');
-      // $this->db->where('x.nomor_dokumen', $nomor_dokumen);
-      // $this->db->where('p.tipe', $type);
-      //
-      // $result = $this->db->get()->result();
       $result = $this->db->query(
         " SELECT
             `p`.`kode_data`,
@@ -143,31 +145,6 @@ class Kelembagaan_model extends CI_Model {
           WHERE `p`.`tipe` = '".$type."'"
       );
       $result = $result->result();
-      // if(empty($result)){
-      //   $this->db->select('p.kode_data, p.nama, x.berkas, x.status, x.created_date');
-      //   $this->db->from('persyaratan p');
-      //   $this->db->join($table. ' x', 'p.kode_data = x.kode_data', 'left');
-      //   $result = $this->db->get()->result();
-      // }
-
-      return $result;
-    }
-
-    function get_persyaratan_x($nomor_dokumen, $table, $type){
-      $this->db->select('p.kode_data, p.nama, x.berkas, x.status, x.created_date');
-      $this->db->from('persyaratan p');
-      $this->db->join($table. ' x', 'p.kode_data = x.kode_data', 'left outer');
-      $this->db->where('x.nomor_dokumen', $nomor_dokumen);
-      $this->db->where('p.tipe', $type);
-
-      $result = $this->db->get()->result();
-
-      if(empty($result)){
-        $this->db->select('p.kode_data, p.nama, x.berkas, x.status, x.created_date');
-        $this->db->from('persyaratan p');
-        $this->db->join($table. ' x', 'p.kode_data = x.kode_data', 'left');
-        $result = $this->db->get()->result();
-      }
 
       return $result;
     }
