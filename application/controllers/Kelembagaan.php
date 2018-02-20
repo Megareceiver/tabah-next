@@ -48,9 +48,11 @@ class Kelembagaan extends CI_Controller {
 		// Dummy data
 		$SESSION['nama_lembaga'] = "Megan..";
 		$SESSION['email_lembaga'] = "megareceiver@gmail.com";
+
+		$data_notifikasi = $this->Kelembagaan_model->get_notifikasi();
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
 		$this->load->view('lembaga/content_navigation', array("page_option"=>"riwayat", "session_data"=>$SESSION));
-		$this->load->view('lembaga/notifikasi_page');
+		$this->load->view('lembaga/notifikasi_page', array("data_notifikasi"=>$data_notifikasi));
 		$this->load->view('public/content_footer');
 	}
 

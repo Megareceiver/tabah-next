@@ -197,6 +197,14 @@ class Kelembagaan_model extends CI_Model {
         $result = $this->db->delete($table);
         return $result;
     }
+
+    //notifikasi
+    function get_notifikasi(){
+      $this->db->where('nomor_lembaga', '00000000000');
+      $this->db->order_by('created_date', 'DESC');
+      $query = $this->db->get("notifikasi");
+      return $query->result();
+    }
 }
 
 ?>
