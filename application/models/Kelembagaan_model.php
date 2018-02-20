@@ -55,6 +55,26 @@ class Kelembagaan_model extends CI_Model {
         $this->db->update($table, $_POST, array('nomor_dokumen' => $_POST['nomor_dokumen']));
     }
 
+    function insert_laporan()
+    {
+        $_POST['nomor_lembaga'] = "00000000000";
+        $_POST['status']        = "Draft";
+        $_POST['created_by']    = "Megan";
+        $_POST['created_date']  = (new \DateTime())->format('Y-m-d H:i:s');
+
+        $this->db->insert("laporan", $_POST);
+    }
+
+    function update_laporan()
+    {
+        $_POST['nomor_lembaga'] = "00000000000";
+        $_POST['status']        = "Draft";
+        $_POST['changed_by']    = "Megan";
+        $_POST['changed_date']  = (new \DateTime())->format('Y-m-d H:i:s');
+
+        $this->db->update("laporan", $_POST, array('nomor_dokumen' => $_POST['nomor_dokumen']));
+    }
+
     //custom function
     function get_proposal_record($table, $nomor_dokumen)
     {
@@ -103,7 +123,9 @@ class Kelembagaan_model extends CI_Model {
 
         $this->db->where('nomor_dokumen', $_POST['nomor_dokumen']);
         $this->db->where('nomor_lembaga', $_POST['nomor_lembaga']);
-        $this->db->delete($table);
+        $result = $this->db->delete($table);
+
+        return $result;
     }
 
 
@@ -130,6 +152,17 @@ class Kelembagaan_model extends CI_Model {
     {
         $this->db->where('kode_data', $_POST['kode_data']);
         $this->db->delete($table);
+    }
+
+    //laporan
+    function get_laporan(){
+      $this->db->select("l.nomor_dokumen, l.judul, p.nominal, p.latar_belakang, l.created_date, l.catatan, l.berkas, l.status");
+      $this->db->from("laporan l");
+      $this->db->join("permohonan_pencairan_proposal p", "l.nomor_dokumen_pencairan = p.nomor_dokumen");
+      $this->db->where('l.nomor_lembaga', '00000000000');
+      $this->db->order_by('l.created_date', 'DESC');
+      $query = $this->db->get();
+      return $query->result();
     }
 
     //persyaratan

@@ -19,10 +19,11 @@ class Kelembagaan extends CI_Controller {
 			"page_option"								 			=> "index",
 			"session_data"							 			=> $SESSION,
 			"button_add"								 			=> array("state"=>true, "url"=>"#form-awal"),
-			"data_permohonan_awal"			 			=> $this->Kelembagaan_model->get_last_entries("permohonan_awal_proposal"),
-			"data_permohonan_pencairan"	 			=> $this->Kelembagaan_model->get_last_entries("permohonan_pencairan_proposal"),
+			"data_permohonan_awal"			 			=> $this->Kelembagaan_model->get_all_entries("permohonan_awal_proposal"),
+			"data_permohonan_pencairan"	 			=> $this->Kelembagaan_model->get_all_entries("permohonan_pencairan_proposal"),
 			"data_permohonan_awal_active"			=> $this->Kelembagaan_model->get_proposal_list("permohonan_awal_proposal"),
-			"data_permohonan_pencairan_active"=> $this->Kelembagaan_model->get_proposal_list("permohonan_pencairan_proposal")
+			"data_permohonan_pencairan_active"=> $this->Kelembagaan_model->get_proposal_list("permohonan_pencairan_proposal"),
+			"data_laporan"	 									=> $this->Kelembagaan_model->get_laporan(),
 		);
 
 		$this->load->view('public/content_header', array("custom_js"=>"/assets/js/kelembagaan.js"));
@@ -121,6 +122,33 @@ class Kelembagaan extends CI_Controller {
 		redirect('../../../../kelembagaan', 'refresh');
 	}
 
+	public function pelaporan(){
+		if(empty($_POST)) return false;
+
+		if(isset($_POST['nomor_dokumen']) && !empty($_POST['nomor_dokumen'])){
+			if($_FILES['berkas']['name']!=''){
+				$file_name	= $_POST['nomor_dokumen'];
+				$file_path  = "./uploads/pelaporan/";
+				if($this->upload($file_name, $file_path)){
+					$_POST['berkas'] = $file_name.".pdf";
+					$this->Kelembagaan_model->update_laporan();
+				}
+			}else{
+				$this->Kelembagaan_model->update_laporan();
+			}
+		}else{
+			$file_name	= "PL_".uniqid();
+			$file_path  = "./uploads/pelaporan/";
+			if($this->upload($file_name, $file_path)){
+				$_POST['nomor_dokumen'] = $file_name;
+				$_POST['berkas'] 				= $file_name.".pdf";
+				$this->Kelembagaan_model->insert_laporan();
+			}
+		}
+
+		redirect('../../../kelembagaan', 'refresh');
+	}
+
 	public function rab($target, $nomor_dokumen){
 		if(empty($_POST)) return false;
 
@@ -146,6 +174,7 @@ class Kelembagaan extends CI_Controller {
 		switch ($target) {
 			case 'awal'			: $table = "permohonan_awal_proposal"; break;
 			case 'pencairan': $table = "permohonan_pencairan_proposal"; break;
+			case 'pelaporan': $table = "laporan"; break;
 
 			default: $table = ""; break;
 		}
@@ -175,6 +204,7 @@ class Kelembagaan extends CI_Controller {
 		switch ($target) {
 			case 'awal'			: $this->Kelembagaan_model->send_proposal("permohonan_awal_proposal"); break;
 			case 'pencairan': $this->Kelembagaan_model->send_proposal("permohonan_pencairan_proposal"); break;
+			case 'pelaporan': $this->Kelembagaan_model->send_proposal("laporan"); break;
 
 			default: break;
 		}
@@ -188,6 +218,12 @@ class Kelembagaan extends CI_Controller {
 		switch ($target) {
 			case 'awal'			: $this->Kelembagaan_model->delete_proposal("permohonan_awal_proposal"); break;
 			case 'pencairan': $this->Kelembagaan_model->delete_proposal("permohonan_pencairan_proposal"); break;
+			case 'pelaporan'	:
+				if($this->Kelembagaan_model->delete_proposal("laporan")){
+					$path = "./uploads/pelaporan/".$nomor_dokumen.".pdf";
+					if(file_exists($path)) unlink($path);
+				}
+			break;
 
 			default: break;
 		}
@@ -273,9 +309,11 @@ class Kelembagaan extends CI_Controller {
       'file_name' => $file_name
     );
 
+		if(file_exists($file_path.$file_name)) unlink($file_path.$file_name);
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('berkas')) return true;
-		else return false;
+		else return false; //echo $this->upload->display_errors();
+
 	}
 
 }

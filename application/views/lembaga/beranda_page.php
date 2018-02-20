@@ -153,13 +153,13 @@
               </li>
             <?php } ?>
           <?php } else{ ?>
-            <div class="section">
-              <div class="row center grey-text">
-                <h4 class="light">Oops, Data tidak ditemukan!</h4>
-                <i class="material-icons large">find_in_page</i>
-                <h6 class="light">Anda data membuat data baru dengan menekan tombol "+" dikanan-bawah layar Anda, <br/>jika terjadi kesalahan mohon hubungi sekretariat kami.</h6>
-              </div>
+          <div class="section">
+            <div class="row center grey-text">
+              <h4 class="light">Oops, Data tidak ditemukan!</h4>
+              <i class="material-icons large">find_in_page</i>
+              <h6 class="light">Anda data membuat data baru dengan menekan tombol "+" dikanan-bawah layar Anda, <br/>jika terjadi kesalahan mohon hubungi sekretariat kami.</h6>
             </div>
+          </div>
           <?php } ?>
         </ul>
       </div>
@@ -168,26 +168,64 @@
       <!-- TAB 3 -->
       <div id="pelaporan" class="col s12 m10 offset-m1">
         <ul class="collapsible popout" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header"><i class="material-icons">class</i>Laporan Hibah 2<span class="new badge" data-badge-caption="Selesai"></span></div>
-            <div class="collapsible-body white">
-              <div class="section">
-                <h6 class="light">Informasi</h6>
-                <div class="collection">
-                  <p class="collection-item"><span class="badge">#proposal1234888</span>Nomor Dokumen</p>
-                  <p class="collection-item"><span class="badge">Rp. 20,000,000</span>Total Pencairan</p>
-                  <p class="collection-item">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
-                  <p class="collection-item grey-text">5 hari yang lalu</p>
+          <?php if(!empty($data_laporan)){ ?>
+            <?php foreach ($data_laporan as $value) { ?>
+              <?php
+                switch ($value->status) {
+                  case 'Draft'      : $color = "yellow darken-2"; $state = "active"; break;
+                  case 'Verifikasi' : $color = "red"; $state = "active"; break;
+                  case 'Menunggu'   : $color = "blue"; $state = "active"; break;
+                  case 'Selesai'    : $color = ""; $state = ""; break;
+                  default: $color = ""; $state = "";
+                }
+              ?>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">class</i><?=$value->judul?><span class="new badge <?=$color?>" data-badge-caption="<?=$value->status?>"></span></div>
+                <div class="collapsible-body white">
+                  <div class="section">
+                    <h6 class="light">Informasi</h6>
+                    <div class="collection">
+                      <p class="collection-item"><span class="badge"><?=$value->nomor_dokumen?></span>Nomor Dokumen</p>
+                      <p class="collection-item"><span class="badge">Rp. <?=number_format($value->nominal)?></span>Total Pencairan</p>
+                      <p class="collection-item"><?=$value->latar_belakang?></p>
+                      <p class="collection-item grey-text">Dibuat <?=$this->public_function->time_elapsed_string($value->created_date)?></p>
+                    </div>
+                  </div>
+                  <div class="section">
+                    <h6 class="light">Persyaratan</h6>
+                    <div class="collection">
+                      <?php if(empty($value->berkas)) { ?>
+                      <p class="collection-item"><span class="badge new red" data-badge-caption="Belum"></span>Laporan (.pdf)</p>
+                      <?php } else { ?>
+                      <a href="/uploads/pelaporan/<?=$value->berkas?>" target="_blank" class="collection-item"><span class="badge new" data-badge-caption="Sudah"></span><?=$value->berkas?></a>
+                      <?php } ?>
+                    </div>
+                  </div>
+                  <?php if(!empty($value->catatan)) { ?>
+                  <div class="section">
+                    <h6 class="light">Catatan Revisi</h6>
+                    <p class="red-text"><?=$value->catatan?></p>
+                  </div>
+                  <?php } ?>
+                  <?php if($value->status != "Selesai") { ?>
+                  <div class="section">
+                    <a href="/kelembagaan/send/pelaporan/<?=$value->nomor_dokumen?>" class="btn white btn-flat waves-effect waves-grey"><i class="material-icons left">receipt</i>Kirim</a>
+                    <a href="#form-pelaporan" data-id="<?=$value->nomor_dokumen?>" data-section="#form-pelaporan" data-target="pelaporan" class="btn white btn-flat waves-effect waves-grey modal-trigger"><i class="material-icons left">mode_edit</i>Ubah</a>
+                    <a href="/kelembagaan/delete/pelaporan/<?=$value->nomor_dokumen?>" class="btn white btn-flat waves-effect waves-grey"><i class="material-icons left">delete</i>Hapus</a>
+                  </div>
+                  <?php } ?>
                 </div>
-              </div>
-              <div class="section">
-                <h6 class="light">Persyaratan</h6>
-                <div class="collection">
-                  <p class="collection-item"><span class="badge new" data-badge-caption="sudah"></span>Laporan (.pdf)</p>
-                </div>
-              </div>
+              </li>
+            <?php } ?>
+          <?php } else{ ?>
+          <div class="section">
+            <div class="row center grey-text">
+              <h4 class="light">Oops, Data tidak ditemukan!</h4>
+              <i class="material-icons large">find_in_page</i>
+              <h6 class="light">Anda data membuat data baru dengan menekan tombol "+" dikanan-bawah layar Anda, <br/>jika terjadi kesalahan mohon hubungi sekretariat kami.</h6>
             </div>
-          </li>
+          </div>
+          <?php } ?>
         </ul>
       </div>
       <!-- TAB 3 End -->
@@ -293,9 +331,10 @@
     <h4 class="card-title light">Pelaporan</h4>
     <p>Harap diperhatikan bahwa semua komponen wajib diisi.</p>
     <div class="row">
-      <form>
+      <form action="/kelembagaan/pelaporan" method="post" enctype="multipart/form-data" accept-charset="utf-8">
         <div class="row">
-          <div class="input-field col s12 m6 l6">
+          <div class="input-field col s12 m12 l6">
+            <input name="nomor_dokumen" type="hidden">
             <select name="nomor_dokumen_pencairan" required>
               <option value="" disabled selected>Pilih</option>
               <?php if(!empty($data_permohonan_pencairan_active)){ ?>
@@ -309,16 +348,19 @@
         </div>
         <div class="row">
           <div class="input-field col s12 m12 l6">
-            <input id="judul" type="text" class="validate" required>
-            <label for="judul">Judul Laporan</label>
+            <input name="judul" id="judul-pelaporan" type="text" class="validate" required>
+            <label for="judul-pelaporan">Judul Laporan</label>
           </div>
         </div>
         <div class="row">
+          <div class="col s12 m12 l12">
+            <p id="berkas-text"></p>
+          </div>
           <div class="file-field input-field col s12 m12 l6">
             <p>Upload berkas Anda disini (.pdf).</p>
             <div class="btn">
               <span>File</span>
-              <input type="file" accept="application/pdf">
+              <input name="berkas" type="file" accept="application/pdf">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text">

@@ -63,6 +63,7 @@ function edit_form_generator(nomor_dokumen, section, target){
 		async: false,
 		data: { nomor_dokumen : nomor_dokumen },
 		success: function(result){
+      if(target != "pelaporan"){
        $(section + " [name=nomor_dokumen]").val(result.nomor_dokumen);
        $(section + " [name=judul]").val(result.judul);
        $(section + " [name=nominal]").val(result.nominal);
@@ -70,6 +71,17 @@ function edit_form_generator(nomor_dokumen, section, target){
 
        $(section + " label").removeClass("active").addClass("active");
        $('[name=nominal]').keyup();
+     }else{
+       $('select').material_select("destroy");
+       $(section + " [name=nomor_dokumen]").val(result.nomor_dokumen);
+       $(section + " [name=nomor_dokumen_pencairan]").val(result.nomor_dokumen_pencairan);
+       $(section + " [name=judul]").val(result.judul);
+       $(section + " #berkas-text").html("Berkas Anda saat ini (<a href='/uploads/pelaporan/" + result.berkas + "' target='_blank'>" + result.berkas + "</a>).");
+
+       $(section + " label").removeClass("active").addClass("active");
+       $(section + " select + label").removeClass("active");
+       $('select').material_select();
+     }
 		},
 		complete: function(xhr,status) { },
 		error: function(xhr,status,error) { console.log(status); }
